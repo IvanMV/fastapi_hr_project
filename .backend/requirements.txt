@@ -1,3 +1,8 @@
 fastapi
 uvicorn
+
+# for templates
 jinja2
+
+# for static files
+aiofiles
