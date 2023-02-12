@@ -1,4 +1,4 @@
-fastapi
+fastapi[all]
 uvicorn
 
 # for templates
@@ -19,3 +19,7 @@ pydantic[email]
 
 #hashing
 passlib[bcrypt]
+
+#for testing
+pytest
+requests
