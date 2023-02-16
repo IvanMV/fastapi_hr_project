@@ -27,3 +27,6 @@ requests
 #hooks
 mypy
 pre-commit
+
+#for jwt tokens
+python-jose
