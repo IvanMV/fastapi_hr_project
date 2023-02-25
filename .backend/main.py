@@ -1,4 +1,5 @@
 from apis.base import api_router
+from webapps.base import api_router as web_app_router
 from core.config import settings
 from db.base import Base
 from db.session import engine
@@ -9,6 +10,7 @@ from fastapi.staticfiles import StaticFiles
 # функция подключения APIRouter
 def include_router(app):
     app.include_router(api_router)
+    app.include_router(web_app_router)
 
 
 # задаем путь и имя для статичных файлов нашего приложения
