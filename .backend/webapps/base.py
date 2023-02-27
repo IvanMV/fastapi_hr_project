@@ -1,5 +1,5 @@
-from webapps.jobs import route_jobs
 from fastapi import APIRouter
+from webapps.jobs import route_jobs
 
 
 api_router = APIRouter()

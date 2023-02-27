@@ -1,10 +1,11 @@
+from db.repository.jobs import list_jobs
+from db.repository.jobs import retreive_job
+from db.session import get_db
 from fastapi import APIRouter
-from fastapi import Request,Depends
+from fastapi import Depends
+from fastapi import Request
 from fastapi.templating import Jinja2Templates
 from sqlalchemy.orm import Session
-
-from db.repository.jobs import list_jobs
-from db.session import get_db
 
 
 # создали объект шаблона Jinja2 и связали его с папкой шаблонов
@@ -16,8 +17,16 @@ router = APIRouter(include_in_schema=False)
 
 
 @router.get("/")
-async def home(request: Request,db: Session = Depends(get_db)):
+async def home(request: Request, db: Session = Depends(get_db)):
     jobs = list_jobs(db=db)
     return templates.TemplateResponse(
-        "general_pages/homepage.html", {"request": request,"jobs":jobs}
+        "general_pages/homepage.html", {"request": request, "jobs": jobs}
+    )
+
+
+@router.get("/details/{id}")
+def job_detail(id: int, request: Request, db: Session = Depends(get_db)):
+    job = retreive_job(id=id, db=db)
+    return templates.TemplateResponse(
+        "jobs/detail.html", {"request": request, "job": job}
     )
