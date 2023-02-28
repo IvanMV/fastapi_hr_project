@@ -6,6 +6,10 @@
 {% endblock %}
 
 {% block content %}
+<!-- New with statement to show alert -->
+  {% with msg=msg %}
+    {% include "components/alerts.html" %}
+  {% endwith %}
   <div class="container">
   <div class="row">
     <div class="col">
