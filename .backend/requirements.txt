@@ -33,3 +33,9 @@ python-jose
 
 #for accessing form data
 python-multipart
+
+#Databases gives asyncio support for a range of databases.
+databases
+
+#For postgres async support
+asyncpg

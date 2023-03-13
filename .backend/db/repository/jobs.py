@@ -1,5 +1,6 @@
 from db.models.jobs import Job
 from schemas.jobs import JobCreate
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 
@@ -41,6 +42,8 @@ def delete_job_by_id(id: int, db: Session, owner_id):
     db.commit()
     return 1
 
+
 def search_job(query: str, db: Session):
-    jobs = db.query(Job).filter(Job.title.contains(query))
+    query = query.lower()
+    jobs = db.query(Job).filter(func.lower(Job.title).contains(query))
     return jobs

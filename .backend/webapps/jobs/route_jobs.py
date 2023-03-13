@@ -1,3 +1,5 @@
+from typing import Optional
+
 from apis.version1.route_login import get_current_user_from_token
 from db.models.users import User
 from db.repository.jobs import create_new_job
@@ -15,7 +17,6 @@ from fastapi.templating import Jinja2Templates
 from schemas.jobs import JobCreate
 from sqlalchemy.orm import Session
 from webapps.jobs.forms import JobCreateForm
-from typing import Optional
 
 
 # создали объект шаблона Jinja2 и связали его с папкой шаблонов
